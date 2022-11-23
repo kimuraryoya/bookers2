@@ -11,43 +11,51 @@
   </head>
 
   <body>
-    <header class="bg-dark text-white pt-2 pb-2">
+    <header class="bg-dark pt-2 pb-2">
       <div class="container">
         <div class="row">
-        <a href="/">Bookers</a>
+        <a class="nav-link text-light" href="/">Bookers</a>
           <% if user_signed_in? %>
         <li　style="list-style: none;">
-          <i class="fas fa-home"></i>
-          <%= link_to "Home", books_path %>
+          <%= link_to user_path(current_user.id),class:'nav-link text-light' do %>
+          <i class="fas fa-home"></i>Home
+          <% end %>
         </li>
         <li　style="list-style: none;">
-          <i class="fas fa-users"></i>
-          <%= link_to "Users", user_path(current_user.id) %>
+          <%= link_to users_path,class:'nav-link text-light' do %>
+          <i class="fas fa-users"></i>Users
+          <% end %>
         </li>
         <li　style="list-style: none;">
-          <i class="fas fa-book-open"></i>
-          <%= link_to "Books", new_book_path %>
+          <%= link_to books_path,class:'nav-link text-light' do %>
+          <i class="fas fa-book-open"></i>Books
+          <% end %>
         </li>
         <li　style="list-style: none;">
-          <i class="fas fa-sign-out-alt"></i>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path,class:'nav-link text-light', method: :delete do  %>
+          <i class="fas fa-sign-out-alt"></i>Log out
+          <% end %>
         </li>
       <% else %>
         <li　style="list-style: none;">
-          <i class="fas fa-home"></i>
-          <%= link_to "Home", root_path %>
+          <%= link_to root_path,class:'nav-link text-light' do %>
+          <i class="fas fa-home"></i>Home
+          <% end %>
         </li>
         <li　style="list-style: none;">
-        　<i class="fas fa-link"></i>
-          <%= link_to "About", about_path %>
+          <%= link_to about_path,class:'nav-link text-light' do %>
+          <i class="fas fa-link"></i>About
+          <% end %>
         </li>
         <li　style="list-style: none;">
-          <i class="fas fa-user-plus"></i>
-          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to new_user_registration_path,class:'nav-link text-light' do %>
+          <i class="fas fa-user-plus"></i>Sign up
+          <% end %>
         </li>
         <li　style="list-style: none;">
-          <i class="fas fa-sign-in-alt"></i>
-          <%= link_to "Log in", new_user_session_path %>
+          <%= link_to new_user_session_path,class:'nav-link text-light' do %>
+          <i class="fas fa-sign-in-alt"></i>Log in
+          <% end %>
         </li>
       <% end %>
     </header>
