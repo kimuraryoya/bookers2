@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-3">
       
-      <%= render 'books/list', book: @book %>
+      <%= render 'books/list', book: @book, user: @books.user %>
       
       <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
@@ -14,8 +14,8 @@
         <tr>
         <td>
           <%= image_tag @books.user.get_profile_image(100,100) %><br>
-          <%= link_to user_path(current_user.id) do %>
-          <%= current_user.name %>
+          <%= link_to user_path(@books.user.id) do %>
+          <%= @books.user.name %>
           <% end %>
         </td>
         <td>
@@ -25,7 +25,9 @@
         </td>
         <td><%= @books.body %></td>
         <td>
+          <% if @books.user == current_user %>
           <%= link_to "Edit", edit_book_path(@books.id),class:'btn btn-success' %>
+          <% end %>
         </td>
         <td>
           <% if @books.user == current_user %>
