@@ -10,32 +10,30 @@
       <h2>Book detail</h2>
       
       <table class="table">
-      <% @books.each do |book| %>
       <tbody>
         <tr>
         <td>
-          <%= image_tag book.user.get_profile_image(100,100) %><br>
+          <%= image_tag @books.user.get_profile_image(100,100) %><br>
           <%= link_to user_path(current_user.id) do %>
           <%= current_user.name %>
           <% end %>
         </td>
         <td>
-        <%= link_to book_path(book.id) do %>
-        <%= book.title %>
+        <%= link_to book_path(@books.id) do %>
+        <%= @books.title %>
         <% end %>
         </td>
-        <td><%= book.body %></td>
+        <td><%= @books.body %></td>
         <td>
-          <%= link_to "Edit", edit_book_path(book.id),class:'btn btn-success' %>
+          <%= link_to "Edit", edit_book_path(@books.id),class:'btn btn-success' %>
         </td>
         <td>
-          <% if @book.user == current_user %>
-          <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に消しますか？",class:'btn btn-danger' %>
+          <% if @books.user == current_user %>
+          <%= link_to "Destroy", book_path(@books.id), method: :delete, "data-confirm" => "本当に消しますか？",class:'btn btn-danger' %>
           <% end %>
         </td>
         </tr>
       </tbody>
-      <% end %>
       </table>
       </div>
     </div>
