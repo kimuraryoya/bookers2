@@ -3,18 +3,18 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      
+
       <%= render 'books/list', book: @book, user: @books.user %>
-      
+
       <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      
+
       <table class="table">
       <tbody>
         <tr>
         <td>
-          <%= image_tag @books.user.get_profile_image(100,100) %><br>
-          <%= link_to user_path(@books.user.id) do %>
+          <%= image_tag @books.user.get_profile_image(100,100) %><br>
+          <%= link_to user_path(@books.user.id) do %>
           <%= @books.user.name %>
           <% end %>
         </td>
